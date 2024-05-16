@@ -14,7 +14,7 @@ import datasets
 from pathlib import Path
 dirname = os.getcwd()
 
-DATA_ROOT = dirname+"/lm_eval/tasks/exams/exams_ar/exams_ar_dataset/data"
+DATA_ROOT = dirname+"/lm-harness/lm_eval/tasks/exams/exams_ar/exams_ar_dataset/data"
 
 _ExamsAr_CITATION = """\
 @inproceedings{
@@ -169,5 +169,4 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                     if value is None:
                         break
                 else:
-                    # print(example['idx'], '================================', example, end='\r')
                     yield example["idx"], example
