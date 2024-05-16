@@ -646,6 +646,7 @@ class Task(abc.ABC):
     @property
     def eval_docs(self) -> Union[datasets.Dataset, List[dict]]:
         if self.has_test_docs():
+            # print('eval_docs@eval_docs func================', self.test_docs())
             return self.test_docs()
         elif self.has_validation_docs():
             return self.validation_docs()
@@ -844,6 +845,7 @@ class ConfigurableTask(Task):
                 )
 
         self.task_docs = self.eval_docs
+        # print('eval_docs -----------------------------------------------', self.eval_docs)
 
         # Test One Doc
         self.features = list(self.task_docs.features.keys())
@@ -897,9 +899,10 @@ class ConfigurableTask(Task):
                     )
 
     def download(self, dataset_kwargs: Optional[Dict[str, Any]] = None) -> None:
+        # print('=================================================', self.DATASET_PATH)
         self.dataset = datasets.load_dataset(
             path=self.DATASET_PATH,
-            name=self.DATASET_NAME,
+            name=self.DATASET_NAME, trust_remote_code=True,
             **dataset_kwargs if dataset_kwargs is not None else {},
         )
 
@@ -1034,18 +1037,23 @@ class ConfigurableTask(Task):
         return doc
 
     def doc_to_text(self, doc):
+        # print('doc ==============================================', doc)
         if self.prompt is not None:
+            # print('prompt =======================', self.prompt)
             doc_to_text = self.prompt
         else:
             doc_to_text = self.config.doc_to_text
+            # print('doc_to_text ====================', doc_to_text)
 
         if isinstance(doc_to_text, int):
             return doc_to_text
         elif isinstance(doc_to_text, str):
+            # print('self.features ============================', self.features)
             if doc_to_text in self.features:
                 # if self.config.doc_to_choice is not None:
                 #     return self.doc_to_choice(doc)[doc[doc_to_text]]
                 # else:
+                # print('features return ---------------------', doc_to_text(doc))
                 return doc[doc_to_text]
             else:
                 text_string = utils.apply_template(doc_to_text, doc)
@@ -1054,6 +1062,7 @@ class ConfigurableTask(Task):
                 else:
                     return text_string
         elif callable(doc_to_text):
+            # print('callable ---------------------', doc_to_text(doc))
             return doc_to_text(doc)
         # Used when applying a Promptsource template
         elif hasattr(doc_to_text, "apply"):

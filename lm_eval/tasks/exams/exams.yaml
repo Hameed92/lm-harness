@@ -6,7 +6,7 @@ output_type: multiple_choice
 process_docs: !function utils.process_docs
 description: "فيما يلي أسئلة الاختيار من متعدد (مع الإجابات) حول {{subject_ar}} \n"
 doc_to_text: "السؤال: {{question}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nالاجابة:"
-doc_to_choice: ["A", "B", "C", "D"]
+#doc_to_choice: ["A", "B", "C", "D"]
 doc_to_target: label
 metric_list:
   - metric: acc

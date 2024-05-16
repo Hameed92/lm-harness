@@ -169,4 +169,5 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                     if value is None:
                         break
                 else:
+                    # print(example['idx'], '================================', example, end='\r')
                     yield example["idx"], example
