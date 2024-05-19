@@ -14,7 +14,7 @@ import datasets
 from pathlib import Path
 dirname = os.getcwd()
 
-DATA_ROOT = dirname+"/lm-harness/lm_eval/tasks/saudipedia/saudipedia_mcq/saudipedia_dataset/data/"
+DATA_ROOT = dirname+"/lm_eval/tasks/saudipedia/saudipedia_mcq/saudipedia_dataset/data/"
 print('dirname ===========', dirname)
 print('dataroot ============', DATA_ROOT)
 _ExamsAr_CITATION = """\
