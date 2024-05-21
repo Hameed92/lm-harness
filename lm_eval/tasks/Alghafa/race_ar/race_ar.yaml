@@ -1,0 +1,20 @@
+task: race_ar
+dataset_path: OALL/AlGhafa-Arabic-LLM-Benchmark-Translated
+dataset_name: race_ar
+output_type: multiple_choice
+validation_split: validation
+test_split: test
+doc_to_text: "سؤال: {{query}}\nاجابة:"
+doc_to_target: '{{lable}}'
+doc_to_choice: '{{[sol1,sol2,sol3,sol4]}}'
+should_decontaminate: true
+doc_to_decontamination_query: "سؤال: {{query}}\nاجابة:"
+metric_list:
+- metric: acc
+  aggregation: mean
+  higher_is_better: true
+- metric: acc_norm
+  aggregation: mean
+  higher_is_better: true
+metadata:
+  version: 1.0
