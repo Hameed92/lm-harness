@@ -1,5 +1,5 @@
 task: saudipedia_tf
-dataset_path: lm_eval\tasks\saudipedia_tf\saudipedia_tf\saudipedia_tf.py
+dataset_path: lm_eval/tasks/saudipedia_tf/saudipedia_tf/saudipedia_tf.py
 test_split: test
 validation_split: validation
 output_type: multiple_choice
