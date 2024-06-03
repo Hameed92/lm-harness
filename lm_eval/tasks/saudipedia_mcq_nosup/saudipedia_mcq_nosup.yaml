@@ -1,5 +1,5 @@
 task: saudipedia_mcq_nosup
-dataset_path: lm_eval/tasks/saudipedia_mcq_nosup/saudipedia_mcq_nosup/saudipedia_mcq_nosup.py
+dataset_path: lm_eval\tasks\saudipedia_mcq_nosup\saudipedia_mcq\saudipedia_mcq_nosup.py
 test_split: test
 validation_split: validation
 output_type: multiple_choice
