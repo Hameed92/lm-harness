@@ -82,7 +82,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                 name= "saudipedia",
                 description=textwrap.dedent("ArabicEval exams Arabic splits."),
                 text_features={"question":"question","choices":"choices"}, 
-                label_classes=['choice_0', 'choice_1', 'choice_2', 'choice_3'],
+                label_classes=["A", "B", "C", "D"],
                 label_column="label",
                 data_url="",
                 data_dir="",
@@ -142,7 +142,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         for index, row in df.iterrows():
             choices = []
             for key, item in row.items():
-                if key.startswith('ch'):
+                if key in ["A", "B", "C", "D"]:
                     choices.append(item)
             example = {'idx': index, "question": row['question'], "choices": choices, 'label': row['label']}
             yield example['idx'], example
