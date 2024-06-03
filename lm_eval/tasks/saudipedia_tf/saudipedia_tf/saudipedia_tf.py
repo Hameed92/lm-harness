@@ -82,7 +82,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                 name= "saudipedia",
                 description=textwrap.dedent("ArabicEval exams Arabic splits."),
                 text_features={"question":"question", "support":"support"}, 
-                # label_classes=['choice_0', 'choice_1'],
+                label_classes=["صح", "خطأ"],
                 label_column="label",
                 data_url="",
                 data_dir="",

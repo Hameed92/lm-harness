@@ -7,7 +7,7 @@ process_docs: !function utils.process_docs
 description: ""
 doc_to_text: "{{support}} بناء على القطعة المعطاة، هل العبارة التالية صح ام خطأ {{question}}"
 doc_to_choice: ["صح", "خطأ"]
-doc_to_target: label
+doc_to_target: "{{label}}"
 metric_list:
   - metric: acc
     aggregation: mean
