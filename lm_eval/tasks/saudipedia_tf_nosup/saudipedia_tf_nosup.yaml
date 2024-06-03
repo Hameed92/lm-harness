@@ -1,0 +1,19 @@
+task: saudipedia_tf_nosup
+dataset_path: lm_eval/tasks/saudipedia_tf/saudipedia_tf/saudipedia_tf.py
+test_split: test
+validation_split: validation
+output_type: multiple_choice
+process_docs: !function utils.process_docs
+description: ""
+doc_to_text: "هل العبارة التالية صحيحة ام خاطئة؟ {{question}} اجب بصح او خطأ"
+doc_to_choice: ["صح", "خطأ"]
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0
