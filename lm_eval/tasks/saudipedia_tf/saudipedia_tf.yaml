@@ -5,7 +5,7 @@ validation_split: validation
 output_type: multiple_choice
 process_docs: !function utils.process_docs
 description: ""
-doc_to_text: "الدعم بناء على القطعة المعطاة، هل العبارة التالية صح ام خطأ"
+doc_to_text: "{{support}} بناء على القطعة المعطاة، هل العبارة التالية صح ام خطأ {{question}}"
 doc_to_choice: ['choice_0', 'choice_1']
 doc_to_target: label
 metric_list:
