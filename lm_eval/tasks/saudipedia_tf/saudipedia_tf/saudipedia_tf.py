@@ -81,8 +81,8 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         ExamsArConfig(
                 name= "saudipedia",
                 description=textwrap.dedent("ArabicEval exams Arabic splits."),
-                text_features={"question":"question","choices":"choices", "support":"support"}, 
-                label_classes=['choice_0', 'choice_1'],
+                text_features={"question":"question", "support":"support"}, 
+                # label_classes=['choice_0', 'choice_1'],
                 label_column="label",
                 data_url="",
                 data_dir="",
@@ -144,5 +144,5 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
             for key, item in row.items():
                 if key.startswith('ch'):
                     choices.append(item)
-            example = {'idx': index, "question": row['question'], "choices": choices, "support":row['support'], 'label': row['label']}
+            example = {'idx': index, "question": row['question'], "support":row['support'], 'label': row['label']}
             yield example['idx'], example
