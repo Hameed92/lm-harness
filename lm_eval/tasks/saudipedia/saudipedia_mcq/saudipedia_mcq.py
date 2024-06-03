@@ -142,7 +142,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         for index, row in df.iterrows():
             choices = []
             for key, item in row.items():
-                if key.startswith('ch'):
+                if key in ["A", "B", "C", "D"]:
                     choices.append(item)
             example = {'idx': index, "question": row['question'], "choices": choices, "support":row['support'], 'label': row['label']}
             yield example['idx'], example
