@@ -101,8 +101,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
     
     def _info(self):
         features = {"support": datasets.Value("string"),
-                    "question": datasets.Value("string"),
-                     "choices":datasets.features.Sequence(datasets.Value("string"))
+                    "question": datasets.Value("string")                  
                    }
         features["label"] = datasets.Value("string")
         features["idx"] = datasets.Value("int32")

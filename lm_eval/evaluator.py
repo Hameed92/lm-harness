@@ -371,6 +371,7 @@ def evaluate(
         # aggregate Instances by LM method requested to get output.
         for instance in task.instances:
             reqtype = instance.request_type
+            print('reqtype ===============================',reqtype)
             requests[reqtype].append(instance)
 
         if lm.world_size > 1:
@@ -404,7 +405,8 @@ def evaluate(
 
         # run requests through model
         resps = getattr(lm, reqtype)(cloned_reqs)
-        # print(resps)
+        print('resps =================================', resps)
+        print('cloned_reqs ==================================', cloned_reqs)
         # put responses from model into a list of length K for each request.
         for x, req in zip(resps, cloned_reqs):
             req.resps.append(x)
