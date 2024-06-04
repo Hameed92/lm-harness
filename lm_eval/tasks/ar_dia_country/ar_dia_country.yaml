@@ -17,6 +17,7 @@ filter_list:
   - name: "flexible-extract"
     filter:
       - function: "regex"
-      - group_select: -1
+        group_select: -1
+      - function: "take_first"
 metadata:
   version: 0.0
