@@ -15,7 +15,7 @@ metric_list:
 generation_kwargs:
   max_gen_toks: 100
 filter_list:
-  - name: "flexible-extract"
+  - name: "extraction_filter"
     filter:
       - function: !function utils.extraction_filter
 metadata:

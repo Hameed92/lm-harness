@@ -1,5 +1,5 @@
 import datasets
-from lm_eval.filters.extraction import Filter, RegexFilter
+from lm_eval.filters.extraction import Filter
 import re
 from lm_eval.api.registry import register_filter
 
@@ -15,6 +15,7 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     #     return out_doc
 
     return dataset
+
 @register_filter("extraction_filter")
 class extraction_filter(Filter):
     def apply(self, resps, docs):
