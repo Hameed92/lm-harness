@@ -18,6 +18,7 @@ def build_filter_ensemble(
         if kwargs is None:
             kwargs = {}
         # create a filter given its name in the registry
+        print('functions:======', function)
         f = partial(get_filter(function), **kwargs)
         # add the filter as a pipeline step
         filters.append(f)
