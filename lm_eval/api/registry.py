@@ -175,6 +175,7 @@ def is_higher_better(metric_name) -> bool:
 
 def register_filter(name):
     def decorate(cls):
+        print('filter name', name)
         if name in FILTER_REGISTRY:
             eval_logger.info(
                 f"Registering filter `{name}` that is already in Registry {FILTER_REGISTRY}"
