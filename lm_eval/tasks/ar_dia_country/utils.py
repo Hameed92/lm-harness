@@ -17,7 +17,7 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     return dataset
 
 @register_filter("extraction_filter")
-class extraction_filter(Filter):
+class ExtractionFilter(Filter):
     def apply(self, resps, docs):
         filtered_resps = []
         for res, doc in zip(resps, docs):
