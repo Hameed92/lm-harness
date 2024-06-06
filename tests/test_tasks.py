@@ -5,12 +5,12 @@ import pytest
 import lm_eval.tasks as tasks
 from lm_eval.api.task import ConfigurableTask
 
-from .utils import new_tasks
+from utils import new_tasks
 
 
 task_manager = tasks.TaskManager()
 # Default Task
-TASKS = ["saudipedia"]
+TASKS = ["ar_dia_country"]
 
 
 def task_class():

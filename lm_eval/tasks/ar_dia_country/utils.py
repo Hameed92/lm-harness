@@ -16,13 +16,3 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
 
     return dataset
 
-@register_filter("extraction_filter")
-class ExtractionFilter(Filter):
-    def apply(self, resps, docs):
-        filtered_resps = []
-        for res, doc in zip(resps, docs):
-            print('doc ===========================', doc)
-            print('res ------------------------------', res)
-            regex = re.compile(doc['ar_dial'])
-            filtered_resps.append(regex.findall(str(res)))
-        return filtered_resps
