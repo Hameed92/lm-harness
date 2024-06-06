@@ -101,7 +101,6 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
     def _info(self):
         features = {"sentence": datasets.Value("string"),
                     "ar_dial": datasets.Value("string")}
-        features["label"] = datasets.Value("string")
         features["idx"] = datasets.Value("int32")
         return datasets.DatasetInfo(
             description=_ExamsAr_DESCRIPTION,
@@ -117,20 +116,20 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                 datasets.SplitGenerator(
                     name=datasets.Split.TEST,
                     gen_kwargs={
-                        "data_file": os.path.join(DATA_ROOT , "arabic_dialects_country_test.csv"),
+                        "data_file": os.path.join(DATA_ROOT , "arabic_dialects_country_sample.csv"),
                         "split": 'test',
                     },
                 )
             )
-        list_splits.append(
-                datasets.SplitGenerator(
-                    name=datasets.Split.VALIDATION,
-                    gen_kwargs={
-                        "data_file": os.path.join(DATA_ROOT,"arabic_dialects_country_val.csv"),
-                        "split": 'dev',
-                    },
-                )
-            )
+        # list_splits.append(
+        #         datasets.SplitGenerator(
+        #             name=datasets.Split.VALIDATION,
+        #             gen_kwargs={
+        #                 "data_file": os.path.join(DATA_ROOT,"arabic_dialects_country_val.csv"),
+        #                 "split": 'dev',
+        #             },
+        #         )
+        #     )
           
         return list_splits
     

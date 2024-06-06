@@ -1,7 +1,7 @@
 import datasets
+from lm_eval.filters.extraction import Filter, RegexFilter
+import re
 
-subtasks = ['Islamic Studies', 'Science', 'Social', 'Biology', 'Physics']
-subtasks_ar = ['الدراسات الإسلامية', 'العلوم', 'الاجتماعيات', 'علم الأحياء', 'علم الفيزياء']
 
 def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     # def _process_doc(doc):
@@ -14,3 +14,13 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     #     return out_doc
 
     return dataset
+
+class extraction_filter(Filter):
+    def apply(self, resps, docs):
+        filtered_resps = []
+        for res, doc in zip(resps, docs):
+            print('doc ===========================', doc)
+            print('res ------------------------------', res)
+            regex = re.compile(doc['ar_dial'])
+            filtered_resps.append(regex.findall(str(res)))
+        return filtered_resps
