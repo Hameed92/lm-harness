@@ -1,22 +1,18 @@
 task: ar_dia_country
 dataset_path: lm_eval/tasks/ar_dia_country/ar_dia_country/ar_dia_country.py
 test_split: test
-output_type: generate_until
+output_type: multiple_choice
 process_docs: !function utils.process_docs
 description: "ما هي لهجة العبارة التالية:\n"
 doc_to_text: "{{sentence}}"
-doc_to_target: "{{ar_dial}}"
+doc_to_choice: ['المصرية', 'العراقية', 'الخليجية', 'الافريقية', 'الشمال افريقية', 'الشامية', 'اليمنية']
+doc_to_target: "{{ar_region}}"
 metric_list:
-  - metric: exact_match
+  - metric: acc
     aggregation: mean
     higher_is_better: true
-    ignore_case: true
-    ignore_punctuation: false
-generation_kwargs:
-  max_gen_toks: 100
-filter_list:
-  - name: "extraction_filter"
-    filter:
-      - function: "extraction_filter"
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
 metadata:
   version: 0.0

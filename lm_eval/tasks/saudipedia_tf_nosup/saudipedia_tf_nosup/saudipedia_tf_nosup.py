@@ -100,8 +100,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
     
     
     def _info(self):
-        features = {"support": datasets.Value("string"),
-                    "question": datasets.Value("string")                  
+        features = {"question": datasets.Value("string")                  
                    }
         features["label"] = datasets.Value("string")
         features["idx"] = datasets.Value("int32")
@@ -139,9 +138,5 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
     def _generate_examples(self, data_file, split, mrpc_files=None):
         df = pd.read_excel(data_file)
         for index, row in df.iterrows():
-            choices = []
-            for key, item in row.items():
-                if key.startswith('ch'):
-                    choices.append(item)
             example = {'idx': index, "question": row['question'], 'label': row['label']}
             yield example['idx'], example

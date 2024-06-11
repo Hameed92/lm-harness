@@ -81,8 +81,8 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         ExamsArConfig(
                 name= "saudipedia",
                 description=textwrap.dedent("ArabicEval exams Arabic splits."),
-                text_features={"sentence": "sentence", "ar_dial": "ar_dial"}, 
-                label_column="ar_dial",
+                text_features={"sentence": "sentence"}, 
+                label_column="ar_region",
                 data_url="",
                 data_dir="",
                 citation=textwrap.dedent(
@@ -116,7 +116,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                 datasets.SplitGenerator(
                     name=datasets.Split.TEST,
                     gen_kwargs={
-                        "data_file": os.path.join(DATA_ROOT , "arabic_dialects_country_sample.csv"),
+                        "data_file": os.path.join(DATA_ROOT , "arabic_dialects_region.xlsx"),
                         "split": 'test',
                     },
                 )
@@ -137,5 +137,5 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         df = pd.read_csv(data_file)
         for index, row in df.iterrows():
             
-            example = {'idx': index, "sentence": row['sentence'], 'ar_dial': row['ar_dial']}
+            example = {'idx': index, "sentence": row['sentence'], 'ar_region': row['ar_region']}
             yield example['idx'], example
