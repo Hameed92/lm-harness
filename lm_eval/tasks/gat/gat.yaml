@@ -1,7 +1,6 @@
 task: gat
 dataset_path: lm_eval/tasks/gat/gat_data/gat.py
 test_split: test
-validation_split: validation
 output_type: multiple_choice
 process_docs: !function utils.process_docs
 doc_to_text: "{{question}}\nأ. {{choices[0]}}\nب. {{choices[1]}}\nج. {{choices[2]}}\nد. {{choices[3]}}\nالاجابة:"
