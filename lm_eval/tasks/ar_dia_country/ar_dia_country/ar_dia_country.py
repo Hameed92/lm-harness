@@ -100,7 +100,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
     
     def _info(self):
         features = {"sentence": datasets.Value("string"),
-                    "ar_dial": datasets.Value("string")}
+                    "ar_region": datasets.Value("string")}
         features["idx"] = datasets.Value("int32")
         return datasets.DatasetInfo(
             description=_ExamsAr_DESCRIPTION,
@@ -116,7 +116,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                 datasets.SplitGenerator(
                     name=datasets.Split.TEST,
                     gen_kwargs={
-                        "data_file": os.path.join(DATA_ROOT , "arabic_dialects_region.xlsx"),
+                        "data_file": os.path.join(DATA_ROOT , "ar_dialects_region.xlsx"),
                         "split": 'test',
                     },
                 )
@@ -134,7 +134,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         return list_splits
     
     def _generate_examples(self, data_file, split, mrpc_files=None):
-        df = pd.read_csv(data_file)
+        df = pd.read_excel(data_file)
         for index, row in df.iterrows():
             
             example = {'idx': index, "sentence": row['sentence'], 'ar_region': row['ar_region']}
