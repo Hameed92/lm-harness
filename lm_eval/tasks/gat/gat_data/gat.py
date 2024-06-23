@@ -75,11 +75,11 @@ class ExamsArConfig(datasets.BuilderConfig):
 
 class ExamsAr(datasets.GeneratorBasedBuilder):
     """The ExamsAr benchmark."""
-
+    dataset_names = ['algebra', 'analogy', 'arithmetic', 'association', 'comparisons', 'completion', 'contextual', 'geometry', 'reading']
     BUILDER_CONFIGS = [
         
         ExamsArConfig(
-                name= "saudipedia",
+                name= name,
                 description=textwrap.dedent("ArabicEval exams Arabic splits."),
                 text_features={"question":"question","choices":"choices"}, 
                 label_classes=["أ", "ب", "ج", "د"],
@@ -93,9 +93,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
                 """
                 ),
                 url="",
-            ),
-                    
-        ]
+            ) for name in dataset_names]
 
     
     
@@ -129,7 +127,7 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         return list_splits
     
     def _generate_examples(self, data_file, split, mrpc_files=None):
-        df = pd.read_excel(data_file)
+        df = pd.read_csv(data_file)
         for index, row in df.iterrows():
             choices = []
             for key, item in row.items():
