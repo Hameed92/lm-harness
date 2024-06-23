@@ -1,0 +1,3 @@
+dataset_name: analogy
+include: gat
+task: gat_analogy

@@ -113,13 +113,14 @@ class ExamsAr(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
+        name = self.config.name
         list_splits = []
         
         list_splits.append(
                 datasets.SplitGenerator(
                     name=datasets.Split.TEST,
                     gen_kwargs={
-                        "data_file": os.path.join(DATA_ROOT, "gat_data.xlsx"),
+                        "data_file": os.path.join(DATA_ROOT, f"gat_data_{name}.csv"),
                         "split": 'test',
                     },
                 )

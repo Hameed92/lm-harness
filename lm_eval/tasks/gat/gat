@@ -1,0 +1,17 @@
+group: gat
+dataset_path: lm_eval/tasks/gat/gat_data/gat.py
+test_split: test
+output_type: multiple_choice
+process_docs: !function utils.process_docs
+doc_to_text: "{{question}}\nأ. {{choices[0]}}\nب. {{choices[1]}}\nج. {{choices[2]}}\nد. {{choices[3]}}\nالاجابة:"
+doc_to_choice: ["أ", "ب", "ج", "د"]
+doc_to_target: "{{label}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0

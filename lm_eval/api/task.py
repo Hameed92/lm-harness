@@ -1075,7 +1075,7 @@ class ConfigurableTask(Task):
                 eval_logger.warning("Applied prompt returns empty string")
                 return self.config.fewshot_delimiter
         else:
-            print(type(doc_to_text))
+            # print(type(doc_to_text))
             raise TypeError
 
     def doc_to_target(self, doc: Mapping) -> Union[int, str, list]:

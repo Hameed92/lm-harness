@@ -1,0 +1,3 @@
+dataset_name: algebra
+include: gat
+task: gat_algebra

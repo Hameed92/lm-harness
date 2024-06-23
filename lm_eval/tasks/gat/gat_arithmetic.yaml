@@ -1,0 +1,3 @@
+dataset_name: arithmetic
+include: gat
+task: gat_arithmetic
