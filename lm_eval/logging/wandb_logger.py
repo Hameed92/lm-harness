@@ -48,7 +48,10 @@ class WandbLogger:
             )
 
         self.wandb_args: Dict[str, Any] = kwargs
-
+        try:
+            wandb.login(self.wandb_args['api_key'])
+        except:
+            print("couldn't loging")
         # initialize a W&B run
         if wandb.run is None:
             self.run = wandb.init(**self.wandb_args)
