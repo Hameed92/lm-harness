@@ -7,6 +7,7 @@ from collections.abc import Callable
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 from inspect import getsource
+import os
 from typing import (
     Any,
     Dict,
@@ -902,6 +903,7 @@ class ConfigurableTask(Task):
         print('=================================================', self.DATASET_PATH)
         print('=====================================', dataset_kwargs)
         print('=====================================', self.DATASET_NAME)
+        os.environ['HF_HOME'] = '/tmp'
         self.dataset = datasets.load_dataset(
             path=self.DATASET_PATH,
             name=self.DATASET_NAME, trust_remote_code=True,
