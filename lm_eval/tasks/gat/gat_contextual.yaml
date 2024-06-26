@@ -1,3 +1,4 @@
 dataset_name: contextual
+description: "اوجد الخطأ السياقي في العبارة التالية من بين الخيارات:"
 include: gat
 task: gat_contextual
