@@ -10,7 +10,7 @@ from utils import new_tasks
 
 task_manager = tasks.TaskManager()
 # Default Task
-TASKS = ["ar_dia_country"]
+TASKS = ["saudipedia_mcq_nosup"]
 
 
 def task_class():

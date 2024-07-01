@@ -400,6 +400,7 @@ env.filters["regex_replace"] = regex_replace
 
 def apply_template(template: str, doc: dict) -> str:
     rtemplate = env.from_string(template)
+    # print(doc)
     return rtemplate.render(**doc)
 
 
